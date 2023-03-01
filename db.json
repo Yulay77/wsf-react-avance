@@ -1,0 +1,35 @@
+{
+  "notifications": [
+    {
+      "title": "test",
+      "date": "2023-03-01",
+      "id": 1
+    },
+    {
+      "title": "dsfget",
+      "date": "2023-02-23",
+      "id": 2
+    },
+    {
+      "title": "dgfhjkjlm",
+      "date": "2023-02-23",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "name": "Oliver Mail",
+      "surname": "Dem",
+      "password": "$2a$10$MRB23gC9aXRm3i9rnVGZS.wJ20gyuFZlTaBfbQjq7zz/rimBQ6sCq",
+      "id": 1
+    },
+    {
+      "email": "olivier2@mail.com",
+      "password": "$2a$10$cfUjBE3xNaK.yDUc1XJmduVCM8SxWd5UeJ5yAwaXEjKtO1VTQpGWO",
+      "name": "Olivier",
+      "surname": "Deme",
+      "id": 2
+    }
+  ]
+}

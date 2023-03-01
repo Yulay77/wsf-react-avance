@@ -1,0 +1,3 @@
+{
+  "/notifications_/*": "/600/notifications/$1"
+}

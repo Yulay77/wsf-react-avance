@@ -1,0 +1,28 @@
+@host = http://localhost:5000
+
+POST {{host}}/register
+Content-Type: application/json
+
+{
+  "name": "Olivier",
+  "surname": "Deme",
+  "email": "olivier2@mail.com",
+  "password": "bestPassw0rd"
+}
+
+###
+POST {{host}}/login
+Content-Type: application/json
+
+{
+  "email": "olivier@mail.com",
+  "password": "bestPassw0rd"
+}
+
+###
+GET http://localhost:5000/notifications
+###
+GET http://localhost:5000/notifications/1
+
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9saXZpZXJAbWFpbC5jb20iLCJpYXQiOjE2Nzc1NzQyODgsImV4cCI6MTY3NzU3Nzg4OCwic3ViIjoiMSJ9.GHH_K8zdrgiBTQ0ePkdT8tKfxl4079xTZMhHbdPhOe4
