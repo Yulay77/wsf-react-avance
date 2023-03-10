@@ -10,7 +10,9 @@ export default function AppLayout() {
   return (
     <div>
       AppLayout
-      <Button title={"Home"} component={Link} to="/" />
+      <Button component={Link} to="/">
+        Home
+      </Button>
       <Button title={"Buttons"} component={Link} to="/buttons" />
       <Button
         title={`Notifications${notifCount !== null ? `(${notifCount})` : ""} `}

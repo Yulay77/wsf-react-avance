@@ -6,6 +6,8 @@ import AppLayout from "./layouts/AppLayout";
 import NotificationView from "./views/NotificationView";
 import { ThemeContext } from "./contexts/ThemeContext";
 import NotificationProvider from "./contexts/NotificationContext";
+import AuthProvider from "./contexts/AuthContext";
+import SecurityView from "./views/SecurityView";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -19,15 +21,18 @@ function App() {
       }}
     >
       <BrowserRouter>
-        <NotificationProvider>
-          <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route path="/" element={<h1>Coucou Home</h1>} />
-              <Route path="/buttons" element={<ButtonView />} />
-              <Route path="/notifications" element={<NotificationView />} />
-            </Route>
-          </Routes>
-        </NotificationProvider>
+        <AuthProvider>
+          <NotificationProvider>
+            <Routes>
+              <Route path="/security" element={<SecurityView />} />
+              <Route path="/" element={<AppLayout />}>
+                <Route path="/" element={<h1>Coucou Home</h1>} />
+                <Route path="/buttons" element={<ButtonView />} />
+                <Route path="/notifications" element={<NotificationView />} />
+              </Route>
+            </Routes>
+          </NotificationProvider>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

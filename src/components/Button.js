@@ -8,6 +8,7 @@ function Button({
   title,
   onClick,
   component: Component = "button",
+  children,
   ...rest
 }) {
   const { theme } = useContext(ThemeContext);
@@ -34,7 +35,7 @@ function Button({
 
   return (
     <Component style={style} onClick={onClick} {...rest}>
-      {title}
+      {children || title}
     </Component>
   );
 }
