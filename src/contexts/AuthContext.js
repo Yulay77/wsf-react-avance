@@ -24,6 +24,23 @@ export default function AuthProvider({ children }) {
     setUser(JSON.parse(atob(payload)));
   }
 
+  async function register(email, password) {
+    const response = await fetch("http://localhost:5000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    if (response.status === 201) {
+      const data = await response.json();
+      localStorage.setItem("token", data.accessToken);
+      setUserFromToken(data.accessToken);
+    } else {
+      throw new Error("register failed" + response.status);
+    }
+  }
+
   async function login(email, password) {
     const response = await fetch("http://localhost:5000/login", {
       method: "POST",
@@ -47,7 +64,7 @@ export default function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

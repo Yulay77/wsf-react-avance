@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import ButtonView from "./views/ButtonView";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
@@ -8,6 +8,8 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import NotificationProvider from "./contexts/NotificationContext";
 import AuthProvider from "./contexts/AuthContext";
 import SecurityView from "./views/SecurityView";
+import PrivateRoute from "./components/PrivateRoute";
+import FormView from "./views/FormView";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -25,7 +27,39 @@ function App() {
           <NotificationProvider>
             <Routes>
               <Route path="/security" element={<SecurityView />} />
-              <Route path="/" element={<AppLayout />}>
+              <Route path="/form" element={<FormView />} />
+              <Route
+                path="/form-init"
+                element={
+                  <FormView
+                    initialValues={{
+                      title: "Coucou",
+                      date: "2021-10-10",
+                      userId: "1",
+                    }}
+                  />
+                }
+              />
+              <Route
+                path="/form-init-props"
+                element={
+                  <FormView
+                  viaProps={{
+                    title: "ALLOOOOOO",
+                    date: "2011-11-11",
+                    userId: "1",
+                  }}
+                />
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <AppLayout />
+                  </PrivateRoute>
+                }
+              >
                 <Route path="/" element={<h1>Coucou Home</h1>} />
                 <Route path="/buttons" element={<ButtonView />} />
                 <Route path="/notifications" element={<NotificationView />} />

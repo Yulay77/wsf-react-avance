@@ -1,0 +1,22 @@
+import {API_BASE_URL} from "./constants";
+
+const oldFetch = window.fetch;
+
+const newFetch = function (url, options = {}) {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    options.headers = {
+      ...(options.headers ?? {}),
+      Authorization: "Bearer " + token,
+    };
+  }
+
+  if(!url.startsWith("http")) {
+    url = API_BASE_URL + url;
+  }
+
+  return oldFetch(url, options);
+};
+
+window.fetch = newFetch;
